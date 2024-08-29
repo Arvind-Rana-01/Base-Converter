@@ -2,22 +2,19 @@ pipeline {
     agent any
 
     stages {
+        stage('Logging..') {
+            steps {
+                bat 'echo Rana'
+            }
+        }
         stage('Build') {
             steps {
-                sh 'make all'
+                bat 'make all'
             }
         }
         stage('Test') {
             steps {
-                sh 'make test'
-            }
-        }
-        stage('Deploy') {
-            when {
-                branch 'main'
-            }
-            steps {
-                sh 'make deploy'
+                bat 'make test'
             }
         }
     }
