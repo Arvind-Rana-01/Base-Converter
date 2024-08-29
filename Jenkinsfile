@@ -1,17 +1,24 @@
 pipeline {
     agent any
-	
+
     stages {
-        stage('Check GCC Version') {
-            steps {
-                bat 'gcc --version'
-            }
-        }
         stage('Build') {
             steps {
-                bat 'gcc Base-Converter.c -o Base-Converter'
+                sh 'make all'
             }
         }
-	
+        stage('Test') {
+            steps {
+                sh 'make test'
+            }
+        }
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh 'make deploy'
+            }
+        }
     }
 }
