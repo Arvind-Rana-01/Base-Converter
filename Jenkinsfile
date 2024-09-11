@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat 'make all'
+                bat 'make'
             }
         }
         stage('Test') {
