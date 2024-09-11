@@ -5,6 +5,8 @@ pipeline {
         stage('Logging..') {
             steps {
                 bat 'echo Rana'
+                bat 'gcc --version'
+                bat 'make --version'
             }
         }
         stage('Build') {
